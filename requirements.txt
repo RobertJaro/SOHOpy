@@ -1,0 +1,8 @@
+# Full local development install.
+#
+# Runtime dependencies and optional workflow/tooling dependencies are declared
+# in pyproject.toml. This file is intentionally a thin pip convenience wrapper:
+#
+#   python -m pip install -r requirements.txt
+
+-e .[dev]

@@ -1,0 +1,122 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sohopy"
+version = "0.1.0"
+description = "Modern Python preparation and calibration tools for SOHO instrument data."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Robert Jarolim" }
+]
+keywords = ["SOHO", "LASCO", "solar physics", "coronagraph", "SolarSoft"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Astronomy",
+]
+dependencies = [
+  "astropy>=6",
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "sunpy>=6",
+]
+
+[project.urls]
+Homepage = "https://github.com/RobertJaro/SOHOpy"
+Repository = "https://github.com/RobertJaro/SOHOpy"
+Documentation = "https://sohopy.readthedocs.io/"
+Issues = "https://github.com/RobertJaro/SOHOpy/issues"
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8",
+]
+lint = [
+  "ruff>=0.5",
+]
+docs = [
+  "furo>=2024.8.6",
+  "myst-parser>=3",
+  "sphinx>=7",
+  "sphinx-autodoc-typehints>=2",
+  "sphinx-copybutton>=0.5",
+]
+viz = [
+  "matplotlib>=3.8",
+]
+notebook = [
+  "ipykernel>=6",
+  "ipywidgets>=8",
+  "jupyterlab>=4",
+  "notebook>=7",
+  "sunpy[net]>=6",
+]
+release = [
+  "build>=1",
+  "twine>=6",
+]
+dev = [
+  "build>=1",
+  "furo>=2024.8.6",
+  "ipykernel>=6",
+  "ipywidgets>=8",
+  "jupyterlab>=4",
+  "matplotlib>=3.8",
+  "myst-parser>=3",
+  "notebook>=7",
+  "pytest>=8",
+  "ruff>=0.5",
+  "sphinx>=7",
+  "sphinx-autodoc-typehints>=2",
+  "sphinx-copybutton>=0.5",
+  "sunpy[net]>=6",
+  "twine>=6",
+]
+
+[project.scripts]
+sohopy-lasco-calib = "sohopy.lasco.cli:calibration_main"
+sohopy-lasco-l1 = "sohopy.lasco.cli:level1_main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sohopy"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/assets",
+  "/docs",
+  "/examples",
+  "/notebooks",
+  "/scripts",
+  "/src",
+  "/tests",
+  "/CHANGELOG.md",
+  "/CITATION.cff",
+  "/LICENSE",
+  "/README.md",
+  "/pyproject.toml",
+  "/requirements*.txt",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

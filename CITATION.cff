@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use SOHOpy in scientific work, please cite this software."
+title: "SOHOpy"
+version: "0.1.0"
+authors:
+  - family-names: "Jarolim"
+    given-names: "Robert"
+license: "GPL-3.0-only"
+repository-code: "https://github.com/RobertJaro/SOHOpy"
+abstract: "Modern Python preparation and calibration tools for SOHO instrument data."
